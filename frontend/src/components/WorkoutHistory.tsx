@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api, Workout } from "../api";
+import { api, type Workout } from "../api";
 
 interface Props {
   onStartWorkout: (id: number) => void;

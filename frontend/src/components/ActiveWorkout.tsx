@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import {
   api,
-  Exercise,
-  WorkoutDetail,
+  type Exercise,
+  type WorkoutDetail,
 } from "../api";
 
 interface Props {
