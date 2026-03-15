@@ -81,6 +81,22 @@ router.patch("/:id", (req, res) => {
   res.json(updated);
 });
 
+// Delete a workout
+router.delete("/:id", (req, res) => {
+  const db = getDb();
+  const workout = db
+    .prepare("SELECT * FROM workout WHERE id = ?")
+    .get(req.params.id);
+
+  if (!workout) {
+    res.status(404).json({ error: "Workout not found" });
+    return;
+  }
+
+  db.prepare("DELETE FROM workout WHERE id = ?").run(req.params.id);
+  res.status(204).end();
+});
+
 // Add an exercise to a workout
 router.post("/:id/exercises", (req, res) => {
   const db = getDb();
